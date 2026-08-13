@@ -1,18 +1,107 @@
-:root {
-	--capriccio-primary: hsl(350, 73%, 29%);
-	--capriccio-primary-light: hsl(350, 73%, 45%);
-	--capriccio-primary-dark: hsl(350, 73%, 20%);
+/* TODO: Add static files for fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400&display=swap');
 
-	--capriccio-gray-50: hsl(25, 20%, 97%);
-	--capriccio-gray-100: hsl(25, 15%, 92%);
-	--capriccio-gray-200: hsl(25, 12%, 85%);
-	--capriccio-gray-600: hsl(25, 8%, 45%);
-	--capriccio-gray-800: hsl(25, 10%, 25%);
-	--capriccio-gray-900: hsl(25, 15%, 15%);
+:root {
+	--font-display: 'Cormorant Garamond', Georgia, serif;
+	--font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+	--font-mono: 'DM Mono', monospace;
+
+	--crimson-50: hsl(350, 60%, 97%);
+	--crimson-100: hsl(350, 65%, 93%);
+	--crimson-200: hsl(350, 68%, 84%);
+	--crimson-500: hsl(350, 73%, 45%);
+	--crimson-700: hsl(350, 73%, 29%);
+	--crimson-800: hsl(350, 73%, 20%);
+
+	--warm-50: hsl(25, 20%, 97%);
+	--warm-100: hsl(25, 15%, 92%);
+	--warm-200: hsl(25, 12%, 85%);
+	--warm-600: hsl(25, 8%, 45%);
+	--warm-800: hsl(25, 10%, 25%);
+	--warm-900: hsl(25, 15%, 15%);
+	--warm-950: hsl(25, 18%, 9%);
+
+	--bg-page: var(--warm-50);
+	--bg-surface: #fff;
+	--fg-primary: var(--warm-900);
+	--fg-secondary: var(--warm-800);
+	--fg-muted: var(--warm-600);
+	--accent: var(--crimson-700);
+	--border: var(--warm-200);
+
+	--shadow-sm: 0 1px 3px rgba(31, 35, 40, 0.08), 0 1px 0 rgba(31, 35, 40, 0.04);
+	--shadow-md: 0 4px 12px rgba(31, 35, 40, 0.1), 0 1px 3px rgba(31, 35, 40, 0.06);
+	--shadow-inset: inset 0 1px 2px rgba(31, 35, 40, 0.075);
+	--shadow-focus: 0 0 0 3px rgba(184, 27, 55, 0.12);
+
+	--radius: 6px;
+	--radius-lg: 10px;
+	--ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+	font-family: var(--font-body);
+	background: var(--bg-page);
+	color: var(--fg-primary);
+	-webkit-font-smoothing: antialiased;
+	margin: 0;
+}
+
+header {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	background: rgba(247, 244, 240, 0.92);
+	backdrop-filter: blur(8px);
+	border-bottom: 1px solid var(--warm-200);
+}
+
+header > div {
+	margin: 0 auto;
+	padding: 0 24px;
+	height: 52px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 760px;
+}
+
+header h1 {
+	font-family: var(--font-display);
+	font-size: 22px;
+	font-weight: 500;
+	color: var(--fg-primary);
+	letter-spacing: -0.01em;
+}
+
+header nav {
+	display: flex;
+	gap: 2px;
+}
+
+header a {
+	background: transparent;
+	border: transparent;
+	border-radius: var(--radius);
+	padding: 5px 12px;
+	font-family: var(--font-body);
+	font-size: 13px;
+	font-weight: 400;
+	color: var(--fg-muted);
+	cursor: pointer;
+	transition: all 0.15s;
+	text-decoration: none;
+}
+
+header a.active {
+	background: var(--warm-100);
+	border: 1px solid var(--warm-200);
+	font-weight: 500;
+	color: var(--fg-primary);
 }
 
 .container {
-	max-width: 800px;
+	max-width: 760px;
 	width: 90%;
 	margin: 2em auto;
 	display: flex;
