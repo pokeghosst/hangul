@@ -1,30 +1,47 @@
 <script lang="ts">
 	import { alphabet } from '$lib/alphabet';
-	import appState from '$lib/AppState.svelte';
+
+	function formatCategoryName(name: string) {
+		return name
+			.split(/(?=[A-Z])/)
+			.map((w) => w[0].toUpperCase() + w.slice(1))
+			.join(' ');
+	}
 </script>
 
-<table>
-	<tbody>
-		{#each alphabet as category, index}
-			<tr>
-				<td>
-					<input
-						type="checkbox"
-						name={category.name}
-						bind:checked={
-							() => appState.enabledGroups[index],
-							(v) => {
-								const a = appState.enabledGroups;
-								a[index] = v;
-								appState.enabledGroups = a;
-							}
-						}
-					/>
-				</td>
+<div class="categories">
+	{#each alphabet as category}
+		<div class="letter-category">
+			<h2>{formatCategoryName(category.name)}</h2>
+			<div class="category-cards">
 				{#each category.letters as letter}
-					<td><span>{letter.letter}</span><br /><span>{letter.romanization}</span></td>
+					<div class="card">
+						<span class="letter">{letter.letter}</span><span class="letter-romanization"
+							>{letter.romanization}</span
+						>
+					</div>
 				{/each}
-			</tr>
-		{/each}
-	</tbody>
-</table>
+			</div>
+		</div>
+	{/each}
+</div>
+
+<style>
+	.categories {
+		padding: 16px 0px 8px;
+	}
+
+	.letter-category {
+		margin-bottom: 24px;
+	}
+
+	.letter-category h2 {
+		font-size: 9px;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--fg-muted);
+		font-family: var(--font-body);
+		margin-bottom: 10px;
+	}
+</style>

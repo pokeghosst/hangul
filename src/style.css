@@ -1,5 +1,6 @@
 /* TODO: Add static files for fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400&display=swap');
+@import 'reset.css';
 
 :root {
 	--font-display: 'Cormorant Garamond', Georgia, serif;
@@ -47,6 +48,16 @@ body {
 	margin: 0;
 }
 
+#root {
+	max-width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	min-height: 100svh;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+}
+
 header {
 	position: sticky;
 	top: 0;
@@ -89,7 +100,6 @@ header a {
 	font-weight: 400;
 	color: var(--fg-muted);
 	cursor: pointer;
-	transition: all 0.15s;
 	text-decoration: none;
 }
 
@@ -250,6 +260,41 @@ main {
 	color: var(--fg-muted);
 	font-size: 13px;
 	font-family: var(--font-mono);
+}
+
+.category-cards {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.category-cards .card .letter {
+	font-family: var(--font-display);
+	font-size: 32px;
+	font-weight: 300;
+	color: var(--fg-primary);
+	line-height: 1;
+}
+
+.category-cards .card .letter-romanization {
+	font-size: 11px;
+	font-weight: 500;
+	color: var(--accent);
+	font-family: var(--font-body);
+	letter-spacing: 0.02em;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: rgb(255, 255, 255);
+	border: 1px solid var(--warm-200);
+	border-radius: var(--radius);
+	padding: 10px 14px;
+	/* min-width: 56px; */
+	box-shadow: var(--shadow-sm);
+	gap: 4px;
 }
 
 table {

@@ -2,7 +2,9 @@
 	import Header from '$components/Header.svelte';
 </script>
 
-<Header />
-<main>
-	<slot></slot>
-</main>
+<div id="root">
+	<Header />
+	<main>
+		<slot></slot>
+	</main>
+</div>
