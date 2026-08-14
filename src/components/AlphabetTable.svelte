@@ -1,12 +1,6 @@
 <script lang="ts">
 	import { alphabet } from '$lib/alphabet';
-
-	function formatCategoryName(name: string) {
-		return name
-			.split(/(?=[A-Z])/)
-			.map((w) => w[0].toUpperCase() + w.slice(1))
-			.join(' ');
-	}
+	import { formatCategoryName } from '$lib/util';
 </script>
 
 <div class="categories">
