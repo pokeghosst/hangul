@@ -15,7 +15,6 @@
 	function checkAnswer(correctAnswer: string[], currentAnswer: string) {
 		if (correctAnswer.includes(currentAnswer)) return true;
 
-		debugger;
 		for (let i = 0; i < currentAnswer.length; i++) {
 			for (let j = 0; j < correctAnswer.length; j++) {
 				if (correctAnswer[j][i] !== currentAnswer[i]) return false;
@@ -60,22 +59,31 @@
 	}
 </script>
 
-<div class="container">
+<div class="trainer">
 	<div class="letter-container">
 		<div class="romanization">{currentLetter.romanization}</div>
 		<div class="letter">{currentLetter.letter}</div>
 	</div>
-	<div class="tip"></div>
+	{#if total == 0 && !answeredIncorrectly}
+		<p class="tip">
+			Hover over the character to see its romanization, then type the correct answer.
+		</p>
+	{/if}
+
 	<input
 		type="text"
 		autocapitalize="off"
 		autocorrect="off"
 		spellcheck="false"
-		class="answer form-control"
+		class="form-control"
 		name="letter"
+		id="letter"
 		oninput={processAnswer}
+		style="width: 220px;"
+		placeholder="Type romanization..."
 		bind:value={currentAnswer}
 	/>
+
 	{#if answeredIncorrectly}
 		<p class="correction">
 			{currentLetter.letter} = {currentLetter.romanization}
@@ -86,16 +94,5 @@
 			{correct} / {total}
 		</div>
 	{/if}
-	{#if total == 0 && !answeredIncorrectly}
-		<p class="tip">
-			Hover over the hangul character to see its romanization and type the correct answer.
-		</p>
-	{/if}
 	<PlaySoundButton letter={currentLetter.letter} />
 </div>
-
-<style>
-	.answer {
-		width: 40%;
-	}
-</style>
